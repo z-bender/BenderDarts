@@ -1,3 +1,5 @@
+package ru.bender.darts.api;
+
 import java.util.Scanner;
 
 /**

@@ -1,3 +1,5 @@
+package ru.bender.darts.api;
+
 import java.util.ArrayList;
 
 /**
@@ -86,7 +88,7 @@ public class PlayerInGame extends Player implements Comparable<PlayerInGame> {
         return pointsToEnd;
     }
 
-    // TODO: проверять из какого метода вызван. Если !Game.step() - тогда Exception. Подумать где ещё может вызываться (например, reset).
+    // TODO: проверять из какого метода вызван. Если !ru.bender.darts.api.Game.step() - тогда Exception. Подумать где ещё может вызываться (например, reset).
     // TODO: продумать подобную проверку для других методов
     void setPointsToEnd(short pointsToEnd) {
         this.pointsToEnd = pointsToEnd;

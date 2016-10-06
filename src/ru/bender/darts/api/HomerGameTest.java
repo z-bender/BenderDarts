@@ -1,3 +1,5 @@
+package ru.bender.darts.api;
+
 /**
  * Created by user on 29.09.2016.
  */

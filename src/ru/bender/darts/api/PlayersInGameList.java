@@ -1,3 +1,5 @@
+package ru.bender.darts.api;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
@@ -51,7 +53,7 @@ public class PlayersInGameList {
     }
 
     /*TODO - хранить прошлые состояния players - посмотреть System.arraycopy
-    * копируем players после step и храним его в очереди (есть ли в java?)
+    * копируем players после step и храним его в очереди
     * */
     public void rollback(){}
 
