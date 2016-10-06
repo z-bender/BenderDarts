@@ -5,7 +5,11 @@ public class HomerGame extends Game {
 
     //------------------- Constants ------------------------------//
 
-    public static short defaultPointsToEnd = 300;
+    public static final short DEFAULT_POINTS_TO_END;
+
+    static {
+        DEFAULT_POINTS_TO_END = 300;
+    }
 
     //------------------- Constructors ---------------------------//
 
@@ -14,7 +18,7 @@ public class HomerGame extends Game {
     }
 
     public HomerGame() {
-        this(defaultPointsToEnd);
+        this(DEFAULT_POINTS_TO_END);
     }
 
 
@@ -23,20 +27,22 @@ public class HomerGame extends Game {
     /**
      * Игрок выполняет ход
      *
-     * @param player - игрок
-     * @param points - количество выбитых очков
-     * @param countOfShots - количество бросков дротика
+     * @param player       - игрок
+     * @param points       - количество выбитых очков
+     * @param shotsCountUI - Интерфейс для UI-элемента, в котором будет вводится количество бросков игрока
      * @return - игрок закончил игру?
      */
     @Override
-    public boolean step(PlayerInGame player, short points, short countOfShots) {
-        if(player.isEnd())
+    public boolean step(PlayerInGame player, short points, ShotsCountUI shotsCountUI) {
+        if (player.isEnd())
             return player.isEnd();
         short currentPointsToEnd = player.getPointsToEnd();
-        currentPointsToEnd = (short)Math.abs(currentPointsToEnd - points);
+        currentPointsToEnd = (short) Math.abs(currentPointsToEnd - points);
         //TODO: isCompletedWithDoubling - добавить закрытие удвоением
         player.setPointsToEnd(currentPointsToEnd);
-        player.addShotsCount(countOfShots);
+        //TODO: если isEnd, то запросить у пользователя количество бросков и переписать countOfShots (в этом случае можно отказаться от перегруза метода и параметра countOfShots
+        short shotsCount = (player.isEnd()) ? shotsCountUI.getShotsCount() : dartsCount;
+        player.addShotsCount(shotsCount);
         //TODO: подумать может ли использоваться в другом месте. Если да, то может быть стоит перенести в сеттер игрока? Наверное не стоит... ещё будет вызываться в сбросе очков для новой игры (наверное не надо там вызывать)
         playersList.refreshPositions();
         return player.isEnd();

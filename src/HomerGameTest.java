@@ -1,7 +1,7 @@
 /**
  * Created by user on 29.09.2016.
  */
-public class HomerGameTest {
+public class HomerGameTest implements ShotsCountUI{
     public static void main(String[] args) {
         HomerGame homerGame = new HomerGame();
         homerGame.playersList.addPlayer(new PlayerInGame("василий", homerGame));
@@ -9,5 +9,10 @@ public class HomerGameTest {
         homerGame.playersList.addPlayer(new PlayerInGame("алёшка", homerGame));
 
         homerGame.play();
+    }
+
+    @Override
+    public short getShotsCount() {
+        return 2;
     }
 }
