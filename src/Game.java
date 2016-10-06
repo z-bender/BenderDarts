@@ -20,7 +20,7 @@ abstract class Game {
 
     // Список игроков
     PlayersInGameList playersList;
-    // Количество дротиков TODO: dont use
+    // Количество дротиков
     protected final short dartsCount;
     // Количество очков для победы
     protected final short pointsToEnd;
