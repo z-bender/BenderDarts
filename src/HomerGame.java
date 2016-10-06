@@ -33,10 +33,7 @@ public class HomerGame extends Game {
         if(player.isEnd())
             return player.isEnd();
         short currentPointsToEnd = player.getPointsToEnd();
-        currentPointsToEnd -= points;
-        if (currentPointsToEnd < 0) {
-            currentPointsToEnd = (short)-currentPointsToEnd;
-        }
+        currentPointsToEnd = (short)Math.abs(currentPointsToEnd - points);
         //TODO: isCompletedWithDoubling - добавить закрытие удвоением
         player.setPointsToEnd(currentPointsToEnd);
         player.addShotsCount(countOfShots);
