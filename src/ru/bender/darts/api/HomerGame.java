@@ -35,7 +35,10 @@ public class HomerGame extends Game {
      * @return - игрок закончил игру?
      */
     @Override
-    public boolean step(PlayerInGame player, short points, ShotsCountUI shotsCountUI) {
+    public boolean step(PlayerInGame player, short points, ShotsCountUI shotsCountUI) throws UnrealPointsException {
+        if (!checkPoints(points)) {
+            throw new UnrealPointsException("Ошибка хода! " + points + " очков нельзя набрать за один ход");
+        }
         if (player.isEnd())
             return player.isEnd();
         short currentPointsToEnd = player.getPointsToEnd();
@@ -48,5 +51,16 @@ public class HomerGame extends Game {
         //TODO: подумать может ли использоваться в другом месте. Если да, то может быть стоит перенести в сеттер игрока? Наверное не стоит... ещё будет вызываться в сбросе очков для новой игры (наверное не надо там вызывать)
         playersList.refreshPositions();
         return player.isEnd();
+    }
+
+    /**
+     * TODO: усложнить логику (добавить количество бросков?)
+     * проверка количества набранных очков за ход на корректность.
+     *
+     * @param points - количество очков
+     * @return
+     */
+    private boolean checkPoints(short points) {
+        return (points > 180) ? false : true;
     }
 }

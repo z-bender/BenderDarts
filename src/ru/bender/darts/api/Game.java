@@ -38,7 +38,11 @@ abstract class Game {
             if (player == null) {
                 break;
             }
-            this.step(player, Helper.getUserInputShort("Бросает " + player.getName() + ". Введи результат: "), new HomerGameTest());
+            try {
+                this.step(player, Helper.getUserInputShort("Бросает " + player.getName() + ". Введи результат: "), new HomerGameTest());
+            } catch (UnrealPointsException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
     }
@@ -51,7 +55,7 @@ abstract class Game {
      * @param shotsCountUI - Интерфейс для UI-элемента, в котором будет вводится количество бросков игрока
      * @return - игрок закончил игру?
      */
-    public abstract boolean step(PlayerInGame player, short points, ShotsCountUI shotsCountUI);
+    public abstract boolean step(PlayerInGame player, short points, ShotsCountUI shotsCountUI) throws UnrealPointsException;
 
 
     //-------------------- Getters/Setters ------------------------//
