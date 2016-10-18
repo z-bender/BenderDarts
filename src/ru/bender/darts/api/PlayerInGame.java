@@ -84,6 +84,10 @@ public class PlayerInGame extends Player implements Comparable<PlayerInGame> {
     //-------------------- Getters/Setters ------------------------//
 
 
+    short getNumber() {
+        return number;
+    }
+
     public short getPointsToEnd() {
         return pointsToEnd;
     }
@@ -107,7 +111,7 @@ public class PlayerInGame extends Player implements Comparable<PlayerInGame> {
         this.number = number;
     }
 
-    public void setPosition(ArrayList<PlayerInGame> players) {
+    void setPosition(ArrayList<PlayerInGame> players) {
         this.position = (short)players.indexOf(this);
     }
 

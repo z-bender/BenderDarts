@@ -3,11 +3,11 @@ package ru.bender.darts.api;
 /**
  * Created by bender on 27.09.2016.
  */
-abstract class Game {
+public abstract class Game {
 
     //------------------- Constants ------------------------------//
 
-    static final short DEFAULT_DARTS_COUNT = 3;
+    public static final short DEFAULT_DARTS_COUNT = 3;
 
     //------------------- Constructors ---------------------------//
 
@@ -21,7 +21,7 @@ abstract class Game {
     //------------------- Fields ---------------------------------//
 
     // Список игроков
-    PlayersInGameList playersList;
+    public PlayersInGameList playersList;
     // Количество дротиков
     protected final short dartsCount;
     // Количество очков для победы
@@ -61,7 +61,7 @@ abstract class Game {
     //-------------------- Getters/Setters ------------------------//
 
 
-    public short getPointsToEnd() {
+    short getPointsToEnd() {
         return pointsToEnd;
     }
 }

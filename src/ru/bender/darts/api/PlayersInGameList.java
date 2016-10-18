@@ -2,6 +2,7 @@ package ru.bender.darts.api;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -61,7 +62,6 @@ public class PlayersInGameList {
      * Обновляем места игроков, по их результатам
      */
     public void refreshPositions() {
-        // TODO: сработает ли compareTo? сделать тест
         Collections.sort(players);
         for (PlayerInGame player : players) {
             player.setPosition(players);
@@ -81,9 +81,6 @@ public class PlayersInGameList {
         return nextPlayer;
     }
 
-
-
-    //-------------------- Getters/Setters ------------------------//
 
     //-------------------- private methods ---------------------------//
 
@@ -115,6 +112,26 @@ public class PlayersInGameList {
         for (PlayerInGame player : players) {
             queueOfPlayersForStep.offer(player);
         }
+    }
+
+    //-------------------- Getters/Setters ------------------------//
+
+
+    /**
+     * Возвращает копию списка игроков отсортированных по номеру в игре
+     *
+     * @return
+     */
+    public ArrayList<PlayerInGame> getPlayers() {
+        ArrayList<PlayerInGame> playersListClone = (ArrayList<PlayerInGame>) players.clone();
+        // TODO: заменить компаратор на лямбду
+        playersListClone.sort(new Comparator<PlayerInGame>() {
+            @Override
+            public int compare(PlayerInGame p1, PlayerInGame p2) {
+                return (p1.getNumber() > p2.getNumber()) ? 1 : -1;
+            }
+        });
+        return playersListClone;
     }
 
 }

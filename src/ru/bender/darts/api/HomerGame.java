@@ -7,11 +7,8 @@ public class HomerGame extends Game {
 
     //------------------- Constants ------------------------------//
 
-    public static final short DEFAULT_POINTS_TO_END;
+    public static final short DEFAULT_POINTS_TO_END = 300;
 
-    static {
-        DEFAULT_POINTS_TO_END = 300;
-    }
 
     //------------------- Constructors ---------------------------//
 
