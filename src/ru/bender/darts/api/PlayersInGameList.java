@@ -123,15 +123,14 @@ public class PlayersInGameList {
      * @return
      */
     public ArrayList<PlayerInGame> getPlayers() {
-        ArrayList<PlayerInGame> playersListClone = (ArrayList<PlayerInGame>) players.clone();
-        // TODO: заменить компаратор на лямбду
-        playersListClone.sort(new Comparator<PlayerInGame>() {
-            @Override
-            public int compare(PlayerInGame p1, PlayerInGame p2) {
-                return (p1.getNumber() > p2.getNumber()) ? 1 : -1;
-            }
-        });
-        return playersListClone;
+        return (ArrayList<PlayerInGame>) players.clone();
     }
+
+    public ArrayList<PlayerInGame> getPlayers(Comparator<PlayerInGame> comparator){
+        ArrayList<PlayerInGame> playersClone = getPlayers();
+        playersClone.sort(comparator);
+        return playersClone;
+    }
+
 
 }

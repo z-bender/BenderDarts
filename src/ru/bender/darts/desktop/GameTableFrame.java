@@ -1,9 +1,12 @@
 package ru.bender.darts.desktop;
 
-import ru.bender.darts.api.*;
+import ru.bender.darts.api.Game;
+import ru.bender.darts.api.PlayerInGame;
+import ru.bender.darts.api.PlayersByNumberComparator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by bender on 18.10.16.
@@ -28,13 +31,12 @@ class GameTableFrame extends JFrame {
     private void makeGUI() {
         //TODO
 
+        ArrayList<PlayerInGame> players = game.playersList.getPlayers(new PlayersByNumberComparator());
+
         playersListPanel = new JPanel();
         playersListPanel.setLayout(new BoxLayout(playersListPanel, BoxLayout.Y_AXIS));
         this.getContentPane().add(playersListPanel, BorderLayout.CENTER);
-        //TODO: IDEA подсказывает: can be replaced with foreach call
-        for (PlayerInGame player: game.playersList.getPlayers()) {
-            addPlayerPanel(player);
-        }
+        players.forEach(player -> addPlayerPanel(player));
         this.setSize(500, 500);
         this.setVisible(true);
     }
