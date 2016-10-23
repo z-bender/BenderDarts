@@ -117,6 +117,19 @@ public class PlayersInGameList {
     //-------------------- Getters/Setters ------------------------//
 
 
+    public enum CompareBy {Number}
+
+    private Comparator<PlayerInGame> getComparator(CompareBy compareBy){
+        Comparator<PlayerInGame> comparator = null;
+        switch (compareBy) {
+            case Number: comparator = (player1, player2) -> player1.getNumber() < player2.getNumber() ? 1 : -1;
+        }
+        if (comparator == null) {
+            throw new DartsApiRuntimeException("Needs add comparator for " + compareBy.toString());
+        }
+        return comparator;
+    }
+
     /**
      * Возвращает копию списка игроков отсортированных по номеру в игре
      *
@@ -126,11 +139,12 @@ public class PlayersInGameList {
         return (ArrayList<PlayerInGame>) players.clone();
     }
 
-    public ArrayList<PlayerInGame> getPlayers(Comparator<PlayerInGame> comparator){
+    public ArrayList<PlayerInGame> getPlayers(CompareBy compareBy){
         ArrayList<PlayerInGame> playersClone = getPlayers();
-        playersClone.sort(comparator);
+        playersClone.sort(getComparator(compareBy));
         return playersClone;
     }
+
 
 
 }

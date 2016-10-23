@@ -2,7 +2,7 @@ package ru.bender.darts.desktop;
 
 import ru.bender.darts.api.Game;
 import ru.bender.darts.api.PlayerInGame;
-import ru.bender.darts.api.PlayersByNumberComparator;
+import ru.bender.darts.api.PlayersInGameList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +31,7 @@ class GameTableFrame extends JFrame {
     private void makeGUI() {
         //TODO
 
-        ArrayList<PlayerInGame> players = game.playersList.getPlayers(new PlayersByNumberComparator());
+        ArrayList<PlayerInGame> players = game.playersList.getPlayers(PlayersInGameList.CompareBy.Number);
 
         playersListPanel = new JPanel();
         playersListPanel.setLayout(new BoxLayout(playersListPanel, BoxLayout.Y_AXIS));
