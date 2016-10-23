@@ -3,7 +3,7 @@ package ru.bender.darts.api;
 /**
  * Created by user on 29.09.2016.
  */
-public class HomerGameTest implements ShotsCountUI{
+class HomerGameTest implements ShotsCountUI{
     public static void main(String[] args) {
         HomerGame homerGame = new HomerGame();
         homerGame.playersList.addPlayer(new PlayerInGame("василий", homerGame));
