@@ -58,6 +58,6 @@ public class HomerGame extends Game {
      * @return
      */
     private boolean checkPoints(short points) {
-        return (points > 180) ? false : true;
+        return !(points > 180);
     }
 }

@@ -1,17 +1,14 @@
 package ru.bender.darts.api;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * Created by bender on 28.09.2016.
  */
 public class PlayersInGameList {
 
-    public PlayersInGameList(ArrayList<PlayerInGame> players) {
-        this.players = players;
+    public PlayersInGameList(List<PlayerInGame> players) {
+        this.players = (ArrayList<PlayerInGame>) players;
         this.queueOfPlayersForStep = new PriorityQueue<>();
         resetListToNewGame();
     }
